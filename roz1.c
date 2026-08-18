@@ -8,38 +8,53 @@ struct product
     float price;
     int Quantity;
 };
+
 void printid(const struct product *id)
 {
+    printf("\n");
     printf("Name: %s\n", id->name);
-    printf("price: %.2f\n", id->price);
-    printf("Quantity:%d \n", id->Quantity );
+    printf("Price: %.2f\n", id->price);
+    printf("Quantity: %d\n", id->Quantity);
 }
-int main() {
 
+int main()
+{
     int x;
-    scanf("how many product? %d\n",&x);
-    struct product *id = malloc(x*sizeof(struct product));
 
-     if (id == NULL) {
+    printf("How many products? ");
+    scanf("%d", &x);
+
+    struct product *id = malloc(x * sizeof(struct product));
+
+    if (id == NULL)
+    {
         printf("Memory allocation failed!\n");
         return 1;
     }
 
-     for (int i = 0; i < x; i++)
-     {
-        scanf("what is name? %s\n",id[i].name);
-        scanf("what is price? %s\n",id[i].price);
-        scanf("how many is Quantity? %s\n",id[i].Quantity);
-      
-     }
-     
-     for (int i = 0; i < x; i++)
-     {
-        printid(id+i);
-     }
-     
-    
+    for (int i = 0; i < x; i++)
+    {
+        printf("\nProduct %d\n", i + 1);
+
+        printf("What is name? ");
+        scanf("%49s", id[i].name);
+
+        printf("What is price? ");
+        scanf("%f", &id[i].price);
+
+        printf("How many? ");
+        scanf("%d", &id[i].Quantity);
+    }
+
+    printf("\n===== PRODUCTS =====\n");
+
+    for (int i = 0; i < x; i++)
+    {
+        printid(&id[i]);
+    }
+
     free(id);
     id = NULL;
-     return 0;  
+
+    return 0;
 }
