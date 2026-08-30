@@ -33,7 +33,7 @@ else{
     printf("Not Same\n");
 }
 
-char second[50]="is learning c.";
+char second[50]=" is learning c.";
 strcat(namecopy, second);
 printf("your copy of name now is :%s\n",namecopy);
 
