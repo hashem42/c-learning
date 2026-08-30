@@ -1,22 +1,26 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
 
-
-int main(){
-
+int main()
+{
     char text[100];
 
     printf("Enter a string: ");
     fgets(text, sizeof(text), stdin);
 
-    int i=0;
-    while( i < sizeof(text)){
-        if(text[i]='\n'){
+    int i = 0;
+
+    while (text[i] != '\0')
+    {
+        if (text[i] == '\n')
+        {
             text[i] = '\0';
+            break;
         }
+
         i++;
     }
 
-    printf("Length: %s\n", text);
+    printf("String with fgets is: %s\n", text);
+
+    return 0;
 }
