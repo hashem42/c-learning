@@ -6,19 +6,24 @@
 int main()
 {
   char *str, c,*ps;
-  int i = 0;
+  int i = 0,capacity =2;
 
-  str = malloc(2*sizeof(char));
+  str = malloc(capacity*sizeof(char));
 
   printf("Enter String : ");
  while (1)
 {
     c = getc(stdin);
-
-    if (c == '\n')
+    if (c == '\n'){
+        
         break;
+    }
+   
+    if (i == (capacity-1))
+{
+    capacity *= 2;
 
-    ps = realloc(str, (i+2) * sizeof(char));
+    ps = realloc(str, capacity * sizeof(char));
 
     if (ps == NULL)
     {
@@ -27,10 +32,9 @@ int main()
     }
 
     str = ps;
-
-    str[i] = c;
-
-    i++;
+}
+str[i] = c;
+i++;
 }
 
   str[i] = '\0'; 
