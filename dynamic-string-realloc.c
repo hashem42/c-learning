@@ -9,6 +9,10 @@ int main()
   int i = 0,capacity =2;
 
   str = malloc(capacity*sizeof(char));
+  if (str == NULL)
+{
+    return 1;
+}
 
   printf("Enter String : ");
  while (1)
